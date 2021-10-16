@@ -1,0 +1,40 @@
+<style>
+
+.responsivee {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+</style>
+
+
+<a href="{{ section.settings.img_url }}"><img class="responsivee" src="{{ section.settings.desktop-image | img_url: 'master' }}" alt="Nature"></a>
+
+
+{% schema %}
+  {
+    "name": "Image Section",
+    "settings": [
+	
+
+	{
+
+	"id": "desktop-image",
+	"type": "image_picker",
+	"label": "Select Image"
+},
+{
+"type": "url",
+"id": "img_url",
+"label": "Image Link"
+}
+
+],
+"presets": [
+{
+"name": "Custom Image Section",
+"category": "Custom Image Section"
+}
+]
+  }
+{% endschema %}

@@ -1,0 +1,34 @@
+<!-- RedRetarget App Hook start -->
+<link rel="dns-prefetch" href="https://trackifyx.redretarget.com">
+
+
+<!-- HOOK JS-->
+{% if template contains "product" %}
+<meta name="tfx:tags" content="{% for tag in product.tags %} {{ tag | strip_html }}, {% endfor %}">
+<meta name="tfx:collections" content="{% for collection in product.collections %}{{ collection.title }}, {% endfor %}">
+{% endif %}
+
+{% if template contains "cart" %}
+<meta name="tfx:tags" content="{% for line_item in cart.items %}{% for tag in line_item.product.tags %}{{ tag | strip_html }}, {% endfor %}{% endfor %}">
+<meta name="tfx:collections" content="{% for line_item in cart.items %}{% for collection in line_item.product.collections %}{{ collection.title }}, {% endfor %}{% endfor %}">
+{% endif %}
+
+{% if template contains "collection" %}
+<meta name="tfx:collections" content="{{ collection.title }}">
+{% endif %}
+
+{% if cart %}
+<script id="tfx-cart">
+    {% assign carttData = cart | json %}
+    window.tfxCart = {{ carttData }}
+</script>
+{% endif %}
+
+{% if product %}
+<script id="tfx-product">
+    {% assign productData = product | json %}
+    window.tfxProduct = {{ productData }}
+</script>
+{% endif %}
+
+<!-- RedRetarget App Hook end -->

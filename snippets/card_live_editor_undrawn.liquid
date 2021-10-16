@@ -1,0 +1,83 @@
+
+{% comment %}
+
+Root element for react tool tip
+
+{% endcomment %}
+
+<style>
+
+    .editor_container{
+        margin: auto;
+        width: 90%;
+        height: 1200px;
+        border: 3px black;
+        border-style:solid;
+        background-image: url("https://i.pinimg.com/originals/df/4e/8b/df4e8ba28f912bf9cdf9fa0dfc196411.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        border-radius: 33px;
+    
+    }
+    .editor_picture_container{
+        margin: 0 20px 0 20px;
+        height: 540px;
+    }
+    .editor_image_area{
+        width: 450px;
+        height: 650px;
+        background-image: url("https://lh3.googleusercontent.com/proxy/yFL0H3BderH_414nwnB-0P0FYcqlgh_K6Y1QfcMq9mmUvboFwrKwuMiF7CBW9fXn1DZpkj0T8ujYR2FNic739K83J5rK-lePkfr3KleEPdKzm6IwRHjB83lQgbZ77Ief1oMe");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        border-radius: 33px;
+    }
+    
+    .editor_inputs_container{
+        background-color: #b1b1b1c2;
+        border-radius: 33px;
+        margin: 0 20px 0 20px;
+        height: 650px;
+        width: 600px;
+    }
+    .tab-pane {
+        padding:20px;
+    }
+
+    </style>
+    
+    
+    <div id="root">
+        <div class="editor_container">
+
+            <ul class="nav nav-tabs" id="myForm">
+                <li class="active"><a href="#one">Un</a></li>
+                <li><a href="#two">Deux</a></li>
+                <li><a href="#three">Trois</a></li>
+                </ul>
+          
+              <form action="" method="post">
+                <div class="tab-content">
+                  <div class="tab-pane active" id="one">
+                    <input type="text" class="form-control" name="name" placeholder="enter name">
+                  </div>
+                  <div class="tab-pane" id="two">
+                    <input type="text" class="form-control" name="email" placeholder="enter email">
+                  </div>
+                  <div class="tab-pane" id="three">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                  </div>    
+                </div>
+              </form>
+
+
+        </div>
+    </div>
+
+    <script>
+        $('#myForm a').click(function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+          })
+    </script>
+
+

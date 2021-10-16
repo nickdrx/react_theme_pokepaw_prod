@@ -1,0 +1,185 @@
+<style>
+  .editor_product_heading {
+    text-align: center;
+}
+  .small_header {
+    font-size: 20px;
+    text-align: center;
+    font-family: 'baloo';
+    color:#3c5ba7;
+  }
+  .big_header{
+    font-size: 40px;
+    text-align: center;
+    font-family: cursive;
+    color:#3c5ba7;
+  }
+  .middle_header{
+    margin-top:10px;
+    font-size: 25px;
+    text-align: center;
+    font-family: 'baloo';
+    color:#3c5ba7;
+  }
+  
+  .editor_description{
+    width: 100%;
+    padding: 29px;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 12px;
+  }
+  @media only screen and (max-width: 464px) {
+    .description_text{
+     font-size: 12px !important;
+    font-family: 'baloo' !important;
+    }
+    .big_header{
+    font-size:30px;
+    }
+    .arrow {
+    margin: 0px 0 0% 20%!important;
+    width: 200px!important;
+}
+}
+  
+
+  .description_text{
+    font-size: 40px;
+    font-family: cursive;
+  }
+  .description_line{
+    margin-bottom:5px;
+	width: 90%;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    height: 1px;
+    margin-left: 4%;
+    align-self: center;
+  }
+  .description_header{
+  	text-decoration: underline black;
+  }
+  
+  .wrapper {
+    text-align: center;
+    width: auto;
+    margin: 0 auto;
+  }
+
+  .inner {
+    display: inline-block;
+  }
+  .select_card_theme:hover{
+    box-shadow: 3px 3px 3px 3px #888888;
+  }
+  .arrow{
+    margin: 0px 0 0% 29%;
+    width: auto;
+  }
+  .BeispielKarte_Ungezeichnet{
+    padding: 20px;
+  }
+  .CardExampleHeading{
+       font-size: 19px;
+    text-align: center;
+    font-family: 'baloo';
+    color:#3c5ba7;
+  }
+  .CardExampleBodyParagraph{
+     font-size: 13px;
+    text-align: center;
+    font-family: 'baloo';
+    color:#3c5ba7;
+  }
+  .FollowToCardProduktLink{
+    text-align: center;
+    font-family: 'baloo';
+    color: black;
+    margin-left: 20%;
+    font-size: 20px;
+  }
+  .product_price_label{
+      font-size: 22px;
+    text-align: center;
+    color: #02c802;
+  }
+  .product_original_price_label{
+    text-decoration: line-through;
+    padding-right:5px;
+  font-size: 22px;
+  }
+  .priceblock{
+text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+  .product_rating{
+    margin-top: -20px;
+    margin-bottom: 39px;
+    text-align: center;
+  }
+</style>
+{% assign GezeichnetProdukt = all_products['Live_editor_gezeichnet_card'] %}
+{% assign UngezeichnetProdukt = all_products['Live_editor_ungezeichnet_card'] %}
+
+
+<div class="page-width">
+  <div class="grid">
+    <div class="grid__item medium-up--five-sixths medium-up--push-one-twelfth">
+      <div class="section-header text-center">
+        
+      </div>
+
+      <div class="rte">
+        <div id="root_content_editor">
+    <!-- Editor Headline -->
+   	<h1 class="editor_product_heading big_header">{{ page.title }}</h1>
+    <p class="editor_product_heading small_header">Schritt 1</p>
+	<!--  Description -->
+    <div class="editor_description">
+      <p class="description_text">Willkommen im Poképaw Karten Konfigurator</p>
+      <p class="description_text">Erstelle jetzt eine echte Sammelkarte<br>für dein Poképaw Haustier...<br></p>
+      <p class="description_text">Los geht`s!</p>
+      <div class="description_line"></div>
+      <p class="description_text description_header">Schritt 1:</p>
+      <p class="description_text">Wähle einen Bildstil für deine Karte aus.</p>
+      <p class="description_text description_header">Option 1 - Dein Foto:</p>
+      <p class="description_text">Das von dir hochgeladene Foto wird auf<br>die Karte übertragen.</p>
+      <p class="description_text description_header">Option 2 - Zeichnung:</p>
+      <p class="description_text">Dein Haustier wird von unseren Künstlern<br>im Poképaw Anime_Stil von Hand gezeichnet.</p>
+    </div>
+    <p class="editor_product_heading middle_header">Wähle einen Bildstil</p>
+    <div>
+    <img class="arrow" alt="arrow" src="{{ 'Arrow.png' | asset_url }}" />
+    </div>
+    <div class="BeispielKarte_Ungezeichnet">
+    <img class="beispielkarte ungezeichnet" alt="arrow" src="{{ 'pokepaw_karte_gezeichnet.jpg' | asset_url }}" />
+    <p class="CardExampleHeading">Poképaw Karte - eigenes Foto</p>
+      <div  class="priceblock">
+		    <p class="product_original_price_label">€24,49</p>
+        <p class="product_price_label">{{UngezeichnetProdukt.price |money}}</p>
+        </div>
+      <div class="areviews_product_item areviews_stars{{ UngezeichnetProdukt.id }} product_rating"  data-product-id="{{ UngezeichnetProdukt.id }}"></div>
+        
+    <p class="CardExampleBodyParagraph">Poképaw Sammelkarte mit eigenem Foto.</p>
+    <p class="CardExampleBodyParagraph">Lieferzeit 3-5 Werktage</p>
+      <a class="FollowToCardProduktLink" href="https://pokepaw.de/products/live_editor_ungezeichnet_card">Jetzt konfigurieren ></a>
+    </div>
+    <div class="BeispielKarte_Ungezeichnet">
+    <img class="beispielkarte ungezeichnet" alt="arrow" src="{{ 'pokepaw_karte_ungezeichnet.jpg' | asset_url }}" />
+    <p class="CardExampleHeading">Poképaw Karte - gezeichnet</p>
+     <div  class="priceblock">
+      <p class="product_original_price_label">€59,49</p>
+    <p class="product_price_label">{{GezeichnetProdukt.price |money}}</p>
+        </div>
+      <div class="areviews_product_item areviews_stars{{ UngezeichnetProdukt.id }} product_rating"  data-product-id="{{ UngezeichnetProdukt.id }}"></div>
+        
+    <p class="CardExampleBodyParagraph">Poképaw Sammelkarte mit personalisierter Zeichnung.</p>
+    <p class="CardExampleBodyParagraph">Lieferzeit 5-7 Werktage</p>
+      <a class="FollowToCardProduktLink" href="https://pokepaw.de/products/live_editor_gezeichnet_card">Jetzt konfigurieren ></a>
+    </div> 
+ 	</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,667 @@
+{
+  "current": {
+    "color_text": "#3c5ba7",
+    "color_body_text": "#000000",
+    "color_sale_text": "#000000",
+    "color_button": "#ffd01e",
+    "color_button_text": "#3d4246",
+    "color_small_button_text_border": "#000000",
+    "color_text_field_text": "#000",
+    "color_text_field_border": "#dbdbdb",
+    "color_text_field": "#fff",
+    "color_image_overlay_text": "#fff",
+    "color_image_overlay": "#3d4246",
+    "image_overlay_opacity": 9,
+    "color_borders": "#ffffff",
+    "color_body_bg": "#fff",
+    "type_header_font": "asap_n4",
+    "type_header_base_size": 26,
+    "type_base_font": "asap_n4",
+    "type_base_size": 16,
+    "type_bold_product_titles": false,
+    "share_image": "",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_twitter_link": "",
+    "social_facebook_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "",
+    "social_tumblr_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "favicon": "shopify:\/\/shop_images\/pokepaw-favi.png",
+    "enable_ajax": true,
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/logo_pokepaw_2021_4306d0dc-9f5b-4a86-9a2d-55f1a23f1f08.png",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "large",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#197bbd",
+    "checkout_button_color": "#0b9c09",
+    "checkout_error_color": "#e32c2b",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "align_logo": "left",
+          "logo": "shopify:\/\/shop_images\/logo_pokepaw_2021_v2.png",
+          "logo_max_width": 250,
+          "main_linklist": "main-menu",
+          "message": false,
+          "home_page_only": true,
+          "message_text": "Werde jetzt Teil der Familie! 💛",
+          "message_link": "shopify:\/\/products\/konfigurator-ichbingelb",
+          "color_bg": "#a7120a",
+          "color_text": "#ffffff"
+        }
+      },
+      "hero": {
+        "type": "hero",
+        "disabled": true,
+        "settings": {
+          "alignment": "center",
+          "hero_layout": "full_width",
+          "hero_size": "adapt",
+          "text_size": "large",
+          "title": "",
+          "text": "",
+          "button_label": ""
+        }
+      },
+      "slideshow": {
+        "type": "slideshow",
+        "disabled": true,
+        "blocks": {
+          "slideshow-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/test_80450498-da70-4fe6-a641-800bb7c5ffef.png",
+              "alignment": "center center",
+              "slide_title": "",
+              "subheading": "",
+              "button_label": ""
+            }
+          }
+        },
+        "block_order": [
+          "slideshow-0"
+        ],
+        "settings": {
+          "slideshow_height": "adapt",
+          "text_size": "medium",
+          "text_alignment": "center center",
+          "show_overlay": false,
+          "autorotate": false,
+          "autorotate_speed": 5
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "link_list": {
+            "type": "link_list",
+            "settings": {
+              "title": "Kundenservice",
+              "menu": "footer"
+            }
+          },
+          "31531071-11a9-4ae4-924d-074d6198e75e": {
+            "type": "text",
+            "settings": {
+              "title": "Disclaimer",
+              "text": "<p>Wir sind in keiner Weise mit The Pokémon Company, Nintendo, Game Freak, Creatures Inc. verbunden, von ihnen autorisiert und weder diese Organisationen noch ihre verbundenen Unternehmen haben uns lizensiert oder unterstützen uns. <\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "link_list",
+          "31531071-11a9-4ae4-924d-074d6198e75e"
+        ],
+        "settings": {
+          "show_payment_icons": true,
+          "color_footer_bg": "#437dbd",
+          "color_footer_text": "#ffffff"
+        }
+      },
+      "1573726894169": {
+        "type": "feature-row",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/karten_farb_auswahl_V2.png",
+          "layout": "right",
+          "title": "",
+          "text": "<p><strong>1. Was für ein Poképaw Typ ist Dein Haustier? <\/strong><\/p><p>Welche Poképaw Typ Kategorie spiegelt Dein Haustier am besten wieder?<\/p><p>Du hast die Wahl zwischen: Elektro, Kampf, Finsternis, Normal, Feuer, Psycho, Pflanze oder Wasser. <\/p><p>Die verschiednen Typen unterscheiden sich in der Farbe und dem Hintergrund der Poképaw Karte.<\/p>",
+          "button_label": "PokéPaw Karte gestalten",
+          "button_link": "shopify:\/\/products\/pokepaw-sammelkarte"
+        }
+      },
+      "1573727432184": {
+        "type": "feature-row",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Emma2_V2.png",
+          "layout": "left",
+          "title": "",
+          "text": "<p><strong>2. Personalisiere alles nach Deinen Wünschen. <\/strong><\/p><p>Wähle aus wie viele Tiere und\/oder Menschen Du auf Deiner Poképaw Karte haben möchtest. Es sind maximal 2 Charaktere auf einer Karte möglich.    Personalisiere anschließend die Werte deiner Poképaw Karte, in dem Du den Namen deines Haustieres angibst, sowie Lebenspunkte. Gib Deinem Poképaw zwei lustige Attacken und bestimme die jeweiligen Angriffsschäden. Im unteren Teil der Karte hast Du die Option einen kurzen Text zu verfassen, z.B. mit einer Besonderheit deines Haustieres. <\/p><p>Lass Deiner Kreativität freien Lauf! <\/p><p>Lade anschließend bis zu 4 Fotos von Deinem Haustier hoch um Deine Bestellung abzuschließen. <\/p>",
+          "button_label": "Poképaw Karte erstellen",
+          "button_link": "shopify:\/\/products\/pokepaw-sammelkarte"
+        }
+      },
+      "1573727523011": {
+        "type": "feature-row",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Baloo_v2.png",
+          "layout": "left",
+          "title": "",
+          "text": "<p><strong>3. Deine Poképaw Karte.<\/strong> <\/p><p><strong>Du erhältst eine echte Sammelkarte<\/strong> welche wir Dir per Post zuschicken. <\/p><p>Wähle aus zwischen einer normalen oder einer Hologramm (Glitzer) Karte.<\/p><p>Nachdem wir Dein Haustier als Poképaw gezeichnet haben und das Kartendesign abgeschloßen ist, erstellen wir eine hochwertige Sammelkarte, welche wir gut verpackt per Post an Dich verschicken. Die Sammelkarte hat die Größe üblicher Sammelkartenspiele (6,3 x 8,8cm).<\/p><p><strong>Bestelle jetzt Deine Poképaw Karte! <\/strong><\/p>",
+          "button_label": "Poképaw Karte bestellen",
+          "button_link": "shopify:\/\/products\/pokepaw-sammelkarte"
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "layout": "grid",
+          "grid": 4,
+          "rows": 2,
+          "show_collection_image": true,
+          "show_vendor": false,
+          "sort_enable": true,
+          "tags_enable": true
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "image_size": "medium",
+          "show_quantity_selector": false,
+          "show_variant_labels": true,
+          "show_vendor": false,
+          "enable_zoom": true,
+          "enable_payment_button": true,
+          "show_share_buttons": false
+        }
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {
+          "show_product_recommendations": false,
+          "heading": "Das könnte Ihnen auch gefallen",
+          "show_vendor": false
+        }
+      },
+      "pina-instagram": {
+        "type": "pina-instagram",
+        "settings": {
+          "title": "Folge uns auf Instagram",
+          "show_profile": true,
+          "timeline": "own",
+          "small": "3",
+          "medium": "3",
+          "large": "4",
+          "gutter": "2",
+          "count": "8",
+          "hashtags": "",
+          "container_class": "page-width",
+          "margin_top": "",
+          "margin_left": "",
+          "margin_bottom": "",
+          "margin_right": "",
+          "desktop_width": "",
+          "mobile_width": "",
+          "tablet_width": ""
+        }
+      },
+      "1612113701205ee935": {
+        "type": "first-section",
+        "settings": {
+          "desktop-image": "shopify:\/\/shop_images\/pokepaw_herobanner_V2_7cd12e80-6bda-4ca1-b307-b70381be41e8.png",
+          "img_url": "shopify:\/\/products\/pokepaw-sammelkarte"
+        }
+      },
+      "16121137112efb7fec": {
+        "type": "first-section",
+        "settings": {
+          "desktop-image": "shopify:\/\/shop_images\/2pp_footer_b4316d97-26e6-4dc1-82e8-ffb9942b3f46.png",
+          "img_url": ""
+        }
+      },
+      "1615775792c623a0da": {
+        "type": "custom-content",
+        "blocks": {
+          "f7a82c34-c2ef-4485-8888-19c8f6ad16a5": {
+            "type": "html",
+            "settings": {
+              "code": "<center> <h3> Jetzt Karte erstellen (nur 2 min.) <\/h3> <div>\n  <a href=\"https:\/\/pokepaw.de\/products\/pokepaw-sammelkarte\" class=\"btn hero__btn\">zum Konfigurator<\/a>\n<\/div>\n<\/center>",
+              "width": "100%"
+            }
+          }
+        },
+        "block_order": [
+          "f7a82c34-c2ef-4485-8888-19c8f6ad16a5"
+        ],
+        "settings": {
+          "title": ""
+        }
+      },
+      "1616894503834d38bf": {
+        "type": "first-section",
+        "settings": {
+          "desktop-image": "shopify:\/\/shop_images\/pokepaw.de_WEF_V2_8782647b-37b3-4c46-87f8-5f96b4845871.jpg",
+          "img_url": ""
+        }
+      },
+      "161697777915fbc1f8": {
+        "type": "custom-content",
+        "blocks": {
+          "e163f055-c5c7-40b1-a1b9-a3372753f817": {
+            "type": "html",
+            "settings": {
+              "code": "<div id=\"ef-faqs-plus-app-content\"><\/div>",
+              "width": "100%"
+            }
+          }
+        },
+        "block_order": [
+          "e163f055-c5c7-40b1-a1b9-a3372753f817"
+        ],
+        "settings": {
+          "title": ""
+        }
+      },
+      "161706357614fee543": {
+        "type": "areviews_home_page_reivews",
+        "settings": {}
+      },
+      "1617063629ddc223fa": {
+        "type": "custom-content",
+        "disabled": true,
+        "blocks": {
+          "98b3597f-8eea-4eb7-9758-4dd6ef438728": {
+            "type": "html",
+            "settings": {
+              "code": "<center> <div>\n  <a href=\"https:\/\/pokepaw.de\/products\/pokepaw-sammelkarte\" class=\"btn hero__btn\">POKÈPAW Karte Erstellen<\/a>\n<\/div>\n<\/center>",
+              "width": "100%"
+            }
+          }
+        },
+        "block_order": [
+          "98b3597f-8eea-4eb7-9758-4dd6ef438728"
+        ],
+        "settings": {
+          "title": ""
+        }
+      },
+      "1632321078bd64a036": {
+        "type": "areviews_slider",
+        "disabled": true,
+        "settings": {}
+      },
+      "1632321087771fc41b": {
+        "type": "areviews_slider",
+        "disabled": true,
+        "settings": {}
+      }
+    },
+    "content_for_index": [
+      "1612113701205ee935",
+      "1616894503834d38bf",
+      "1573726894169",
+      "1573727432184",
+      "1573727523011",
+      "1617063629ddc223fa",
+      "161706357614fee543",
+      "161697777915fbc1f8",
+      "1615775792c623a0da",
+      "16121137112efb7fec",
+      "1632321078bd64a036",
+      "1632321087771fc41b"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "color_text": "#3d4246",
+      "color_body_text": "#69727b",
+      "color_sale_text": "#557B97",
+      "color_borders": "#e8e9eb",
+      "color_button": "#557B97",
+      "color_button_text": "#fff",
+      "color_small_button_text_border": "#3d4246",
+      "color_text_field": "#fff",
+      "color_text_field_text": "#000",
+      "color_text_field_border": "#949494",
+      "color_image_overlay_text": "#fff",
+      "color_image_overlay": "#3d4246",
+      "image_overlay_opacity": 40,
+      "color_body_bg": "#fff",
+      "type_header_font": "work_sans_n6",
+      "type_header_base_size": 26,
+      "type_base_font": "work_sans_n4",
+      "type_base_size": 16,
+      "type_bold_product_titles": false,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {}
+        },
+        "hero": {
+          "type": "hero",
+          "settings": {
+            "text_size": "large"
+          }
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "slideshow-0": {
+              "type": "image",
+              "settings": {}
+            },
+            "slideshow-1": {
+              "type": "image",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "slideshow-0",
+            "slideshow-1"
+          ],
+          "settings": {}
+        },
+        "featured-collections": {
+          "type": "collection",
+          "settings": {
+            "collection": "frontpage"
+          }
+        },
+        "feature-row": {
+          "type": "feature-row",
+          "settings": {}
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "link_list": {
+              "type": "link_list",
+              "settings": {}
+            },
+            "text": {
+              "type": "text",
+              "settings": {}
+            },
+            "newsletter": {
+              "type": "newsletter",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "link_list",
+            "text",
+            "newsletter"
+          ],
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "hero",
+        "featured-collections",
+        "feature-row",
+        "slideshow"
+      ]
+    },
+    "Light": {
+      "color_text": "#162950",
+      "color_body_text": "#6d6d6d",
+      "color_sale_text": "#DA2F0C",
+      "color_borders": "#e4e4e4",
+      "color_button": "#DA2F0C",
+      "color_button_text": "#ffffff",
+      "color_small_button_text_border": "#162950",
+      "color_text_field": "#ffffff",
+      "color_text_field_text": "#162950",
+      "color_text_field_border": "#909090",
+      "color_image_overlay_text": "#ffffff",
+      "color_image_overlay": "#3d3d3d",
+      "image_overlay_opacity": 40,
+      "color_body_bg": "#f8f8f8",
+      "type_header_font": "muli_n6",
+      "type_header_base_size": 26,
+      "type_base_font": "muli_n4",
+      "type_base_size": 18,
+      "type_bold_product_titles": true,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "social_twitter_link": "",
+      "social_facebook_link": "",
+      "social_pinterest_link": "",
+      "social_instagram_link": "",
+      "social_tumblr_link": "",
+      "social_snapchat_link": "",
+      "social_youtube_link": "",
+      "social_vimeo_link": "",
+      "favicon": "",
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "small",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#ffffff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#e8f3f6",
+      "checkout_heading_font": "Roboto",
+      "checkout_body_font": "Source Sans Pro",
+      "checkout_accent_color": "#1990c6",
+      "checkout_button_color": "#23314e",
+      "checkout_error_color": "#ff6d6d",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "align_logo": "left",
+            "logo": "",
+            "logo_max_width": 135,
+            "main_linklist": "main-menu",
+            "message": true,
+            "color_bg": "#162950",
+            "color_text": "#ffffff"
+          }
+        },
+        "hero": {
+          "type": "hero",
+          "settings": {
+            "alignment": "center",
+            "hero_size": "x-large",
+            "text_size": "large"
+          }
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "slideshow-0": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "alignment": "center center"
+              }
+            },
+            "1492095993817": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "alignment": "center"
+              }
+            }
+          },
+          "block_order": [
+            "slideshow-0",
+            "1492095993817"
+          ],
+          "settings": {
+            "slideshow_height": "medium",
+            "text_size": "medium",
+            "autorotate": false,
+            "autorotate_speed": 5
+          }
+        },
+        "featured-collections": {
+          "type": "collection",
+          "settings": {
+            "grid": 3,
+            "rows": 1,
+            "show_vendor": true,
+            "show_view_all": true
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "image_size": "medium",
+            "show_quantity_selector": false,
+            "show_variant_labels": true,
+            "show_vendor": false,
+            "enable_zoom": true,
+            "show_share_buttons": true
+          }
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "layout": "grid",
+            "grid": 2,
+            "rows": 2,
+            "show_collection_image": true,
+            "show_vendor": false,
+            "sort_enable": true,
+            "tags_enable": true
+          }
+        },
+        "1492033809691": {
+          "type": "map",
+          "settings": {}
+        },
+        "1492033877875": {
+          "type": "quotes",
+          "blocks": {
+            "1492033877875-0": {
+              "type": "quote",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1492033877875-0"
+          ],
+          "settings": {}
+        },
+        "1492033924902": {
+          "type": "custom-content",
+          "blocks": {
+            "1492033924902-0": {
+              "type": "text",
+              "settings": {
+                "width": "100%",
+                "alignment": "center",
+                "align_text": "center"
+              }
+            }
+          },
+          "block_order": [
+            "1492033924902-0"
+          ],
+          "settings": {
+            "title": ""
+          }
+        },
+        "1492096252560": {
+          "type": "collection-list",
+          "blocks": {
+            "1492096252560-0": {
+              "type": "featured_collection",
+              "settings": {}
+            },
+            "1492096252560-1": {
+              "type": "featured_collection",
+              "settings": {}
+            },
+            "1492096252560-2": {
+              "type": "featured_collection",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1492096252560-0",
+            "1492096252560-1",
+            "1492096252560-2"
+          ],
+          "settings": {
+            "grid": 3
+          }
+        },
+        "blog-template": {
+          "type": "blog-template",
+          "settings": {
+            "layout": "grid",
+            "blog_show_author": true,
+            "blog_show_date": false
+          }
+        },
+        "article-template": {
+          "type": "article-template",
+          "settings": {
+            "blog_show_author": true,
+            "blog_show_date": true,
+            "show_share_buttons": true
+          }
+        },
+        "cart-template": {
+          "type": "cart-template",
+          "settings": {
+            "cart_notes_enable": false
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "link_list": {
+              "type": "link_list",
+              "settings": {}
+            },
+            "text": {
+              "type": "text",
+              "settings": {}
+            },
+            "newsletter": {
+              "type": "newsletter",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "link_list",
+            "text",
+            "newsletter"
+          ],
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "hero",
+        "featured-collections",
+        "slideshow",
+        "1492033924902",
+        "1492096252560",
+        "1492033877875",
+        "1492033809691"
+      ]
+    }
+  }
+}
