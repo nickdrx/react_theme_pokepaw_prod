@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "pokepaw_konfigurator_package",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nickdrx/react_theme_pokepaw_prod.git"
+},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --config webpack.dev.js --progress --color",
