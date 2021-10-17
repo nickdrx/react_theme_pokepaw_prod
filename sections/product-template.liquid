@@ -1,22 +1,22 @@
 <style>
     .editor_product_heading {
     text-align: center;
+    body{
+      width: 100%!important;
+    }
 }
 </style>
 
 {% if template contains 'card_live_editor_gezeichnet' %}
-
 <div id="root_content_editor">
+<!-- Editor Headline -->
 <h1 class="editor_product_heading">Gezeichnete Karte Konfigurator</h1>
-{% include 'react-pokepaw_konfigurator' %}
-
-    <!-- Editor Headline -->
-    
 </div>
 {% elsif template contains 'card_live_editor_ungezeichnet' %}
 <div id="root_content_editor">
   <!-- Editor Headline -->
 <h1 class="editor_product_heading">Ungezeichnete Karte Konfigurator</h1>
+{% include 'react-pokepaw_konfigurator' %}
 </div>
 {% else %}
 

@@ -66,11 +66,19 @@
                               Check if there was an uploaded file associated
                             {%- endcomment -%}
                             <span data-cart-item-property-value>
+                              {% if p.first == 'Photo' %}
+                              <a href="{{ p.last }}"><img style="vertical-align: middle;width: 100px;" src="{{p.last}}"></a>
+                              <br />
+                              {% else %}
+                               {{ p.first }}:
                               {%- if p.last contains '/uploads/' -%}
-                                <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                              <br />
+                                <a href="{{ p.last }}"><img style="vertical-align: middle;width: 100px;" src="{{p.last}}"></a>
                               {%- else -%}
                                 {{ p.last }}
                               {%- endif -%}
+                              <br />
+                              {% endif %}
                             </span>
                           </li>
                         {%- endunless -%}

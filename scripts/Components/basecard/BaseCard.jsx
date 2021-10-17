@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { retreatCostsConfig, icons, atkTwoConfig, cards, atkOneConfig, ablAtkConfig } from "./configs"
 import { Stepper, Step, StepLabel, FormGroup, Button, Checkbox, Collapse, FormControlLabel, Grid, Box, Typography, Backdrop, MenuItem, CircularProgress, Menu } from '@material-ui/core'
-import { WrrIcon, WrrText, InputAccourcion, BasicTextField, BorderLinearProgress, WrrAutocomplete, CustomIncreaseDecrease, DeleteButton, HealthpointsText, IllustratorText, ShopnameText, TransformButton, checResistanceNumber, variableFontSize, BasicCombobox, uploadToContest, downloadHandler, convertDataURLToImage } from '../common/common.js'
+import { WrrIcon, WrrText, InputAccourcion, BasicTextField, BorderLinearProgress, WrrAutocomplete, CustomIncreaseDecrease, DeleteButton, HealthpointsText, IllustratorText, ShopnameText, TransformButton, checResistanceNumber, variableFontSize, BasicCombobox, uploadToContest, downloadHandler, convertDataURLToImage, uploadToCloudinaryandtoCard } from '../common/common.js'
 
 import { Stage, Layer, Image, Text, Line, Transformer, Label } from 'react-konva';
 import loading from '../../assets/loadingGif.gif'
@@ -11,6 +11,8 @@ import useImage from 'use-image';
 import "../../App.css"
 import { render } from '@testing-library/react';
 import { color } from '@mui/system';
+import Popup from "reactjs-popup";
+import Compress from "react-image-file-resizer";
 
 
 
@@ -154,7 +156,7 @@ const VirtualImage = ({ shapeProps, isSelected, onSelect, onChange, uploadedImag
 
 
 
-const BaseCard = (_props) => {
+const BaseCard = () => {
     const [isLoading, setIsLoading] = useState(false)
     const stageRef = React.useRef(null);
     const [customCardImage, setCustomCardImage] = useState(null)
@@ -269,7 +271,6 @@ const BaseCard = (_props) => {
 
     const handleImageUpload = (event) => {
         setCustomCardImage(URL.createObjectURL(event.target.files[0]));
-        setTestImage(event.target.files[0]);
     }
 
     const onFeatureTitleChange = (event, state, stateFunction) => {
@@ -402,29 +403,28 @@ const BaseCard = (_props) => {
         setActiveStep(0);
       };
 
-      const addProduct = () => {
-        const reader = new FileReader();
+      function addProduct(anotherArticle) {
+        const uri = stageRef.current.toDataURL({ mimeType: "image/webp", quality: 1});
 
-
-         switch(basePrice){
-             case parseFloat(_props.product.variants[0].price): {
-                 _props.addVariantToCart("Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC80MTE0MDgwNTYzMjE2MA==", amount, testImage);
-                 break;
-                }
-             case parseFloat(_props.product.variants[1].price): {
-                _props.addVariantToCart("Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC80MTE0MDgwNTY2NDkyOA==", amount, "1");
-                break;
+        switch(basePrice){
+            case parseFloat(14.49): {
+                
+            uploadToCloudinaryandtoCard(uri ,41140805632160, amount, anotherArticle);
+            break;
             }
-             case parseFloat(_props.product.variants[2].price): {
-                 _props.addVariantToCart("Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC80MTE0MDgwNTY5NzY5Ng==", amount, "2");
-                 break;
+            case parseFloat(19.49): {
+            uploadToCloudinaryandtoCard(uri ,41140805664928, amount, anotherArticle);
+            break;
             }
-             case parseFloat(_props.product.variants[3].price): {
-                 _props.addVariantToCart("Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC80MTE0MDgwNTczMDQ2NA==", amount, "3");
-                 break;
-               }
+            case parseFloat(23.39): {
+            uploadToCloudinaryandtoCard(uri ,41140805697696, amount, anotherArticle);
+            break;
+            }
+            case parseFloat(28.39): {
+            uploadToCloudinaryandtoCard(uri ,41140805730464, amount, anotherArticle);
+            break;
+            }
          }
-        handleDownload();
       }
 
       function renderStep(step){
@@ -650,9 +650,10 @@ const BaseCard = (_props) => {
                         <Grid item xs={2} sm={2}><BasicTextField id="input-additionals-amount" placeholder={INPUT_PROPS.additionals.amount.placeholder} value={amount} onChange={event => { onAmountChange(event) }} inputProps={{ maxLength: "3", max: "999", min: "1", type: "number" }} /></Grid>
                         {/* <Grid item xs={10}></Grid> */}
                         <Grid item xs={12}>
-                        <Button style={{backgroundColor:"rgb(60, 91, 167)", color:"white", width:'100%'}}>{INPUT_PROPS.abschluss.buttonWeiterKarte}</Button>
+                        <Button style={{backgroundColor:"rgb(60, 91, 167)", color:"white", width:'100%'}} onClick={() => addProduct(true)}>{INPUT_PROPS.abschluss.buttonWeiterKarte}</Button>
+                        <Button style={{backgroundColor:"rgb(60, 91, 167)", color:"white", width:'100%', marginTop:'4px'}} className="Main_Button" onClick={() => addProduct(false)}>{INPUT_PROPS.abschluss.buttonAbschließen}</Button>
                         </Grid>
-                        </Grid>
+                        </Grid> 
                     </React.Fragment>
                 );
             }
@@ -742,7 +743,13 @@ const BaseCard = (_props) => {
         })}
       </Stepper>
       {activeStep === Steppersteps.length ? (
-        console.log("finished")
+        <Button
+        className="Main_Button"
+        onClick={handleReset}
+        sx={{ mr: 1 }}
+        >
+      Zurück
+    </Button>
       ) : (
         <React.Fragment>
             {renderStep(activeStep)}
@@ -764,11 +771,7 @@ const BaseCard = (_props) => {
               </Button>
             )}
             {activeStep === Steppersteps.length - 1 ? (
-            <Button className="Main_Button"
-                onClick={addProduct}
-                >
-              {INPUT_PROPS.abschluss.buttonAbschließen}
-            </Button>
+            console.log("finished!")
             )
              : (
                 <Button className="Main_Button" onClick={handleNext}>

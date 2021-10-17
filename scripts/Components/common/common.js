@@ -8,6 +8,7 @@ import loading from '../../assets/loadingGif.gif'
 import "../../App.css"
 import {INPUT_PROPS } from '../../assets/default.js'
 
+
 export const FrameImage = ({ image, x, y, width, height, visible, opacity, frameProps }) => {
     const [img] = useImage(image);
     return <Image image={img} x={x} y={y} width={width} height={height} visible={visible} opacity={opacity} preventDefault={false} {...frameProps} />;
@@ -306,10 +307,53 @@ export const dataURItoBlob = (dataURI) => {
 export const convertDataURLToImage = async (dataURL) => {
     let blob = await dataURItoBlob(dataURL)
     let image = new File([blob], "image.png", {
-        type: "image/png"
+        type: "image/png",
     })
     return image
 }
+
+export const uploadToCloudinaryandtoCard = (uri, variantId, amount, anotherArticle) => {
+    //Create Data Object
+    var data = {
+        upload_preset: "z2iv3bxn", // the unsigned image preset within cloudinary
+        context: "photo=phototitle",
+        file: uri 
+    }
+
+    jQuery.post("https://api.cloudinary.com/v1_1/dynqzfnnt/upload", data).done(function(data) {
+                   // do something here
+                }).then(function(data) {
+                    let formData = {
+                        'items': [{
+                        'id': variantId,
+                        'quantity': amount,
+                        'properties': {
+                            'Photo': data.secure_url
+                        }
+                        }]
+                        };
+    
+                     fetch('/cart/add.js', {
+                        method: 'POST',
+                        headers: {
+                        'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                        })
+                        .then(response => {
+                        if (anotherArticle === true){
+                            window.location.reload(false); 
+                        }else if(anotherArticle === false){
+                        window.location.replace("/cart");
+                        }
+                        return response.json();
+                        })
+                        .catch((error) => {
+                        console.error('Error:', error);
+                        });
+                });
+        return true;
+    }
 
 // export const ContestResponseDialog = (response) => {
 //     if (response === 200) {

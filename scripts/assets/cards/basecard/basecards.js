@@ -1,11 +1,11 @@
-import pflanze_basic from './pflanze/1_pflanze_karte.png'
-import feuer_basic from './feuer/1_feuer_karte.png'
-import wasser_basic from './wasser/1_wasser_karte.png'
-import psycho_basic from './psycho/1_psycho_karte.png'
-import elektro_basic from './elektro/1_elektro_karte.png'
-import normal_basic from './normal/1_normal_karte.png'
-import kampf_basic from './kampf/1_kampf_karte.png'
-import finsternis_basic from './finsternis/1_finsternis_karte.png'
+const pflanze_basic = require('./pflanze/1_pflanze_karte.png');
+const feuer_basic = require('./feuer/1_feuer_karte.png');
+const wasser_basic = require('./wasser/1_wasser_karte.png');
+const psycho_basic = require('./psycho/1_psycho_karte.png');
+const elektro_basic = require('./elektro/1_elektro_karte.png');
+const normal_basic = require('./normal/1_normal_karte.png');
+const kampf_basic = require('./kampf/1_kampf_karte.png');
+const finsternis_basic = require('./finsternis/1_finsternis_karte.png');
 
 export {
     pflanze_basic,
