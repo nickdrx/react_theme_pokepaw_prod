@@ -4,7 +4,7 @@ import { Accordion, AccordionDetails, AccordionSummary, Backdrop, Button, Dialog
 import { Add as AddIcon, CenterFocusStrong, Description, Remove as RemoveIcon } from '@material-ui/icons'
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import React from 'react';
-import loading from '../../assets/loadingGif.gif'
+import loading from '../../../assets/loadingGif.gif'
 import "../../App.css"
 import {INPUT_PROPS } from '../../assets/default.js'
 

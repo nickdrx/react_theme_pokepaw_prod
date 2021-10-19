@@ -32,7 +32,7 @@
     "social_youtube_link": "",
     "social_vimeo_link": "",
     "favicon": "shopify:\/\/shop_images\/pokepaw-favi.png",
-    "enable_ajax": true,
+    "enable_ajax": false,
     "checkout_header_image": "",
     "checkout_logo_image": "shopify:\/\/shop_images\/logo_pokepaw_2021_4306d0dc-9f5b-4a86-9a2d-55f1a23f1f08.png",
     "checkout_logo_position": "left",

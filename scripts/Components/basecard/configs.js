@@ -1,5 +1,24 @@
-import { pflanze_basic, feuer_basic, wasser_basic, psycho_basic, elektro_basic,  normal_basic, kampf_basic, finsternis_basic } from '../../assets/cards/basecard/basecards.js'
-import {  darkImage, fightingImage, fireImage, grassImage, lightningImage, psychicImage, waterImage, normalImage } from '../../assets/typeIcons/typeIcons.js'
+import React, { useState, useEffect } from 'react';
+
+
+const CardPlanze = 'https://cdn.shopify.com/s/files/1/0554/4057/2576/t/9/assets/1_pflanze_karte.png?v=7010108639482829919';
+const CardFeuer =  'https://cdn.shopify.com/s/files/1/0554/4057/2576/t/9/assets/1_feuer_karte.png?v=8874202177365162412';
+const CardWasser = 'https://cdn.shopify.com/s/files/1/0554/4057/2576/t/9/assets/1_wasser_karte.png?v=4787179642220768052';
+const CardPsycho = 'https://cdn.shopify.com/s/files/1/0554/4057/2576/t/9/assets/1_psycho_karte.png?v=10079966239826265070';
+const CardElektro = 'https://cdn.shopify.com/s/files/1/0554/4057/2576/t/9/assets/1_elektro_karte.png?v=9266683675416933535';
+const CardNormal = 'https://cdn.shopify.com/s/files/1/0554/4057/2576/t/9/assets/1_normal_karte.png?v=11695136987055346955';
+const CardKampf = 'https://cdn.shopify.com/s/files/1/0554/4057/2576/t/9/assets/1_kampf_karte.png?v=3479434328579203087';
+const CardFinsternis = 'https://cdn.shopify.com/s/files/1/0554/4057/2576/t/9/assets/1_finsternis_karte.png?v=8069353974506429989';
+
+
+const PflanzeIcon = 'https://cdn.shopify.com/s/files/1/0554/4057/2576/t/9/assets/grass-thumbnail.png?v=262978755752589757';
+const FeuerIcon = 'https://cdn.shopify.com/s/files/1/0554/4057/2576/t/9/assets/fire-thumbnail.png?v=3352239319451728964';
+const WasserIcon = 'https://cdn.shopify.com/s/files/1/0554/4057/2576/t/9/assets/water-thumbnail.png?v=4192130843896120973';
+const PsychoIcon = 'https://cdn.shopify.com/s/files/1/0554/4057/2576/t/9/assets/psychic-thumbnail.png?v=1395257491664953305';
+const ElektroIcon = 'https://cdn.shopify.com/s/files/1/0554/4057/2576/t/9/assets/lightning-thumbnail.png?v=1426050179370864288';
+const NormalIcon = 'https://cdn.shopify.com/s/files/1/0554/4057/2576/t/9/assets/normal-thumbnail.png?v=1436657233733366119';
+const KampfIcon = 'https://cdn.shopify.com/s/files/1/0554/4057/2576/t/9/assets/fighting-thumbnail.png?v=989673766798842188';
+const FinsternisIcon = 'https://cdn.shopify.com/s/files/1/0554/4057/2576/t/9/assets/dark-thumbnail.png?v=9682264188183492969';
 
 
 export const retreatCostsConfig = [
@@ -27,23 +46,23 @@ export const atkTwoConfig = [
 ]
 
 export const cards = [
-    { title: "Pflanze", selectorIcon: grassImage, index: 0, assets: { title: "Basic", asset: pflanze_basic, index: 0 } },
-    { title: "Feuer", selectorIcon: fireImage, index: 1, assets: { title: "Basic", asset: feuer_basic, index: 0 } },
-    { title: "Wasser", selectorIcon: waterImage, index: 2, assets: { title: "Basic", asset: wasser_basic, index: 0 } },
-    { title: "Psycho", selectorIcon: psychicImage, index: 3, assets: { title: "Basic", asset: psycho_basic, index: 0 } },
-    { title: "Elektro", selectorIcon: lightningImage, index: 4, assets: { title: "Basic", asset: elektro_basic, index: 0 } },
-    { title: "Normal", selectorIcon: normalImage, index: 5, assets: { title: "Basic", asset: normal_basic, index: 0 } },
-    { title: "Kampf", selectorIcon: fightingImage, index: 6, assets: { title: "Basic", asset: kampf_basic, index: 0 } },
-    { title: "Finsternis", selectorIcon: darkImage, index: 7, assets: { title: "Basic", asset: finsternis_basic, index: 0 } },
+    { title: "Pflanze", selectorIcon: PflanzeIcon, index: 0, assets: { title: "Basic", asset: CardPlanze, index: 0 } },
+    { title: "Feuer", selectorIcon: FeuerIcon, index: 1, assets: { title: "Basic", asset: CardFeuer, index: 0 } },
+    { title: "Wasser", selectorIcon: WasserIcon, index: 2, assets: { title: "Basic", asset: CardWasser, index: 0 } },
+    { title: "Psycho", selectorIcon: PsychoIcon, index: 3, assets: { title: "Basic", asset: CardPsycho, index: 0 } },
+    { title: "Elektro", selectorIcon: ElektroIcon, index: 4, assets: { title: "Basic", asset: CardElektro, index: 0 } },
+    { title: "Normal", selectorIcon: NormalIcon, index: 5, assets: { title: "Basic", asset: CardNormal, index: 0 } },
+    { title: "Kampf", selectorIcon: KampfIcon, index: 6, assets: { title: "Basic", asset: CardKampf, index: 0 } },
+    { title: "Finsternis", selectorIcon: FinsternisIcon, index: 7, assets: { title: "Basic", asset: CardFinsternis, index: 0 } },
 ]
 
 export const icons = [
-    { key: "Pflanze", value: grassImage },
-    { key: "Feuer", value: fireImage },
-    { key: "Wasser", value: waterImage },
-    { key: "Psycho", value: psychicImage },
-    { key: "Elektro", value: lightningImage },
-    { key: "Normal", value: normalImage },
-    { key: "Kampf", value: fightingImage },
-    { key: "Finsternis", value: darkImage }
+    { key: "Pflanze", value: PflanzeIcon },
+    { key: "Feuer", value: FeuerIcon },
+    { key: "Wasser", value: WasserIcon },
+    { key: "Psycho", value: PsychoIcon },
+    { key: "Elektro", value: ElektroIcon },
+    { key: "Normal", value: NormalIcon },
+    { key: "Kampf", value: KampfIcon },
+    { key: "Finsternis", value: FinsternisIcon }
 ]

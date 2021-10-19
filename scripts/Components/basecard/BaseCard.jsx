@@ -5,18 +5,13 @@ import { Stepper, Step, StepLabel, FormGroup, Button, Checkbox, Collapse, FormCo
 import { WrrIcon, WrrText, InputAccourcion, BasicTextField, BorderLinearProgress, WrrAutocomplete, CustomIncreaseDecrease, DeleteButton, HealthpointsText, IllustratorText, ShopnameText, TransformButton, checResistanceNumber, variableFontSize, BasicCombobox, uploadToContest, downloadHandler, convertDataURLToImage, uploadToCloudinaryandtoCard } from '../common/common.js'
 
 import { Stage, Layer, Image, Text, Line, Transformer, Label } from 'react-konva';
-import loading from '../../assets/loadingGif.gif'
 import { STATE_VALUES, INPUT_PROPS } from '../../assets/default.js'
 import useImage from 'use-image';
 import "../../App.css"
 import { render } from '@testing-library/react';
 import { color } from '@mui/system';
 import Popup from "reactjs-popup";
-import Compress from "react-image-file-resizer";
 
-
-
-//Test
 
 
 function RenderAttackCosts(props) {
@@ -31,7 +26,7 @@ function RenderAttackCosts(props) {
 };
 
 function AttackCostsImage(props) {
-    const [image] = useImage(props.image);
+    const [image] = useImage(props.image, 'Anonymous');
     return (<Image image={image} preventDefault={false} x={props.x} y={props.y} width={25} height={25} visible={props.visible} />);
 };
 
@@ -62,7 +57,7 @@ function Cardname (props) {
 }
 
 const FrameImage = ({ image, x, y, width, height, visible, opacity, frameProps, stateFunction }) => {
-    const [img, status] = useImage(image);
+    const [img, status] = useImage(image, 'Anonymous');
 
     if (status === "loading") {
         stateFunction(true)
@@ -74,14 +69,14 @@ const FrameImage = ({ image, x, y, width, height, visible, opacity, frameProps, 
 };
 
 const MainCustomImage = ({ shapeProps, uploadedImage }) => {
-    const [image] = useImage(uploadedImage);
+    const [image] = useImage(uploadedImage, 'Anonymous');
     return (
         <Image image={image} {...shapeProps} preventDefault={false} opacity={1} draggable /> 
     );
 };
 
 const VirtualImage = ({ shapeProps, isSelected, onSelect, onChange, uploadedImage }) => {
-    const [image] = useImage(uploadedImage);
+    const [image] = useImage(uploadedImage, 'Anonymous');
     const shapeRef = React.useRef();
     const trRef = React.useRef();
 
@@ -185,6 +180,7 @@ const BaseCard = () => {
     const [basePrice, setBasePrice] = useState(STATE_VALUES.product.price)
     const [ungezeichneteKarte, setungezeichneteKarte] = useState(basePrice)
     const [testImage, setTestImage] = useState("");
+    const [loading] = useImage("https://cdn.shopify.com/s/files/1/0554/4057/2576/files/logo_pokepaw_2021_v2_360x.png?v=1617492402");
 
     const handleDownload = () => {
         downloadHandler(checkIsSelected, stageRef, cardName);
@@ -404,7 +400,9 @@ const BaseCard = () => {
       };
 
       function addProduct(anotherArticle) {
+        console.log(stageRef);
         const uri = stageRef.current.toDataURL({ mimeType: "image/webp", quality: 1});
+        console.log(uri);
 
         switch(basePrice){
             case parseFloat(14.49): {
