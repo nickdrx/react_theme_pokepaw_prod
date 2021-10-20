@@ -3,20 +3,12 @@ import React, { Component } from "react"
 import "./App.css"
 import BaseCard from './Components/basecard/BaseCard.jsx';
 
-class App extends Component {
-    constructor() {
-        super();   
-        console.log("test");
-    }
-      
-    
-      render() {
-        return(
-            <div className="App">
-            <BaseCard />
-            </div>
-        );
-    }
-}
 
+const App = () => {
+    return(
+        <div className="App">
+        <BaseCard />
+        </div>
+    );
+}
 export default App

@@ -16,14 +16,39 @@ export const STATE_VALUES = {
         domain: "pokepaw.myshopify.com",
         storefrontAccessToken: "7370e8f518ccae22b6ae9df27039bfc7",
         productId: "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzcwMDkyODM3MDI5NDQ=",
-        price: 14.49
+        price: 14.49,
+        variants: {
+            variant1: 41140805632160,
+            variant2: 41140805664928,
+            variant3: 41140805697696,
+            variant4: 41140805730464,
+            },
+        prices: {
+            variant1: 14.49,
+            variant2: 19.49,
+            variant3: 23.39,
+            variant4: 28.39,
+        }
     },
     product2: {
         domain: "pokepaw.myshopify.com",
         storefrontAccessToken: "7370e8f518ccae22b6ae9df27039bfc7",
         productId: "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzcwMDkyODY4ODE0NDA=",
-        price: 24.49
-    }
+        price: 24.49,
+        variants: {
+            variant1: 41208316068000,
+            variant2: 41208316100768,
+            variant3: 41208316133536,
+            variant4: 41208316166304,
+            },
+        prices: {
+            variant1: 24.49,
+            variant2: 29.49,
+            variant3: 33.39,
+            variant4: 38.39,
+        }
+    },
+    loading: 'https://cdn.shopify.com/s/files/1/0554/4057/2576/files/logo_pokepaw_2021_v2_360x.png?v=1617492402'
 
 }
 
@@ -34,7 +59,6 @@ export const INPUT_PROPS = {
     categorie: {
         basic: "Basis Information",
         featureOne: "Feature Eins",
-        featureTwo: "Feature Zwei",
         additionals: "Additionals",
     },
     shopname: "",
@@ -72,8 +96,8 @@ export const INPUT_PROPS = {
     },
     featureOne: {
         selector: {
-            placeholder: "Feature Eins",
-            label: "Feature Eins"
+            placeholder: "Attacke 1",
+            label: "Attacke 1"
         },
         title: {
             placeholder: "Attacke",
@@ -102,8 +126,8 @@ export const INPUT_PROPS = {
     },
     featureTwo: {
         selector: {
-            placeholder: "Feature Eins",
-            label: "Feature Eins"
+            placeholder: "Attacke 2",
+            label: "Attacke 2"
         },
         title: {
             placeholder: "Attacke",
@@ -151,8 +175,7 @@ export const INPUT_PROPS = {
         label: "Eigener Text"
     },
     stepper_steps: [ "Basis Informationen",
-                     "Feature Eins",
-                    "Feature Zwei",
+                     "Attacken",
                     "Erweiterungen",
                     "Abschluss"
     ],

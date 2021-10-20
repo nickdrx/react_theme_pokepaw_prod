@@ -312,6 +312,50 @@ export const convertDataURLToImage = async (dataURL) => {
     return image
 }
 
+export const uploadToCloudinaryandtoCardgezeichnet = (uri, variantId, amount, anotherArticle) => {
+    //Create Data Object
+    var data = {
+        upload_preset: "qflywbku", // the unsigned image preset within cloudinary
+        context: "photo=phototitle",
+        file: uri
+    }
+
+    jQuery.post("https://api.cloudinary.com/v1_1/dhymgkjqg/upload", data).done(function(data) {
+                   // do something here
+                }).then(function(data) {
+                    let formData = {
+                        'items': [{
+                        'id': variantId,
+                        'quantity': amount,
+                        'properties': {
+                            'Photo': data.secure_url
+                        }
+                        }]
+                        };
+    
+                     fetch('/cart/add.js', {
+                        method: 'POST',
+                        headers: {
+                        'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                        })
+                        .then(response => {
+                        if (anotherArticle === true){
+                            window.location.reload(false); 
+                        }else if(anotherArticle === false){
+                        window.location.replace("/cart");
+                        }
+                        return response.json();
+                        })
+                        .catch((error) => {
+                        console.error('Error:', error);
+                        });
+                });
+        return true;
+    }
+
+
 export const uploadToCloudinaryandtoCard = (uri, variantId, amount, anotherArticle) => {
     //Create Data Object
     var data = {

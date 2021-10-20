@@ -1,14 +1,27 @@
 body {
-  margin-right: 2%;
   height: 100vh;
   width: 100%;
+  font-family: -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", 'Inter', "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   /* overflow-y: hidden; */
 }
 
+#cardname, #healthPoints, #simpleTextTwo, #feature-one-description, #feature-one-damage, #feature-one-energy, #feature-two-name, #feature-two-description-bottom, #feature-two-damage{
+  font-family: -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", 'Inter', "Helvetica Neue", sans-serif !important;
+}
+.MuiFormLabel-root{
+font-size: 26px !important;
+color: #3c5ba7 !important;
+}
 .App {
   text-align: center;
   /* background-color: #282c34; */
   background-color: #fff;
+}
+
+#pokepaw_konfigurator_ungezeichnet, #pokepaw_konfigurator {
+  margin-right: 5%;
 }
 
 
@@ -68,12 +81,12 @@ body {
 @media (max-width: 600px){
 .cardframe_mobilscale {
     -webkit-transform: scale(.7);
-    transform: scale(.7);
-    margin: -75px 0 -100px -55px!important;
+    transform: scale(.8);
+    margin: -75px 0 -100px -50px!important;
 }
-.stepperframe_mobilscale{
-  transform: scale(.5);
-  margin: -146px 0 0px -158px!important;
+.stepperframe_mobilscale {
+  transform: scale(.62);
+  margin: 0px 0px 0px -112px!important
 }
 }
 
@@ -344,4 +357,8 @@ body {
 .Line-item__remove:hover {
   opacity: 1;
   cursor: pointer;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }

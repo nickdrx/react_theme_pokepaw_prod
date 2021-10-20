@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { retreatCostsConfig, icons, atkTwoConfig, cards, atkOneConfig, ablAtkConfig } from "./configs"
 import { Stepper, Step, StepLabel, FormGroup, Button, Checkbox, Collapse, FormControlLabel, Grid, Box, Typography, Backdrop, MenuItem, CircularProgress, Menu } from '@material-ui/core'
@@ -180,7 +180,8 @@ const BaseCard = () => {
     const [basePrice, setBasePrice] = useState(STATE_VALUES.product.price)
     const [ungezeichneteKarte, setungezeichneteKarte] = useState(basePrice)
     const [testImage, setTestImage] = useState("");
-    const [loading] = useImage("https://cdn.shopify.com/s/files/1/0554/4057/2576/files/logo_pokepaw_2021_v2_360x.png?v=1617492402");
+    const [loading] = useImage(STATE_VALUES.loading);
+    const myRef = useRef(null)
 
     const handleDownload = () => {
         downloadHandler(checkIsSelected, stageRef, cardName);
@@ -400,29 +401,30 @@ const BaseCard = () => {
       };
 
       function addProduct(anotherArticle) {
-        console.log(stageRef);
         const uri = stageRef.current.toDataURL({ mimeType: "image/webp", quality: 1});
-        console.log(uri);
 
         switch(basePrice){
-            case parseFloat(14.49): {
+            case parseFloat(STATE_VALUES.product.prices.variant1): {
                 
-            uploadToCloudinaryandtoCard(uri ,41140805632160, amount, anotherArticle);
+            uploadToCloudinaryandtoCard(uri ,STATE_VALUES.product.variants.variant1, amount, anotherArticle);
             break;
             }
-            case parseFloat(19.49): {
-            uploadToCloudinaryandtoCard(uri ,41140805664928, amount, anotherArticle);
+            case parseFloat(STATE_VALUES.product.prices.variant2): {
+            uploadToCloudinaryandtoCard(uri ,STATE_VALUES.product.variants.variant2, amount, anotherArticle);
             break;
             }
-            case parseFloat(23.39): {
-            uploadToCloudinaryandtoCard(uri ,41140805697696, amount, anotherArticle);
+            case parseFloat(STATE_VALUES.product.prices.variant3): {
+            uploadToCloudinaryandtoCard(uri ,STATE_VALUES.product.variants.variant3, amount, anotherArticle);
             break;
             }
-            case parseFloat(28.39): {
-            uploadToCloudinaryandtoCard(uri ,41140805730464, amount, anotherArticle);
+            case parseFloat(STATE_VALUES.product.prices.variant4): {
+            uploadToCloudinaryandtoCard(uri ,STATE_VALUES.product.variants.variant4, amount, anotherArticle);
             break;
             }
          }
+      }
+      const executeScroll = () => {
+        myRef.current.scrollIntoView()   
       }
 
       function renderStep(step){
@@ -470,7 +472,7 @@ const BaseCard = () => {
                         
                         <Grid container spacing={1}>
                             <Grid item xs={12} sm={6}><Typography variant="h6" >{INPUT_PROPS.backgroundImageButtonText}</Typography></Grid>
-                            <Grid item xs={12} sm={6}><UploadButton buttonTitle="Upload Image" onChange={(event) => {handleImageUpload(event); setIsSelected(true);}} onClick={(event) => event.target.value = null} /></Grid>
+                            <Grid item xs={12} sm={6}><UploadButton buttonTitle="Upload Image" onChange={(event) => {handleImageUpload(event); setIsSelected(true);}} onClick={(event) => event.target.value = null, executeScroll} /></Grid>
                             <Grid item xs={12} sm={6}><DeleteButton fullWidth onClick={(event) => { setCustomCardImage(null); setIsSelected(false) }} disabled={customCardImage === null ? true : false} /></Grid>
                             <Grid item xs={12} sm={6}><TransformButton fullWidth isSelected={isSelected} onClick={(event) => { setIsSelected(!isSelected); }} disabled={customCardImage === null ? true : false} /></Grid>
                         </Grid>
@@ -479,16 +481,13 @@ const BaseCard = () => {
             }
             case 1: {
                 return(
-                    <React.Fragment>
+                <React.Fragment>
+                <Grid item xs={12}><Typography variant="h5" style={{color:"black",}} component="h5">{INPUT_PROPS.featureOne.selector.label}</Typography></Grid>
                 <BasicTextField id="input-feature-one-title" label={INPUT_PROPS.featureOne.title.label} placeholder={INPUT_PROPS.featureOne.title.placeholder} value={featureOne.title} onChange={event => { onFeatureTitleChange(event, featureOne, setFeatureOne) }} disabled={selectedFeatureOne.inputDisabled} inputProps={{ maxLength: "23", type: "text" }} />
                 <BasicTextField id="input-feature-one-description" label={INPUT_PROPS.featureOne.description.label} placeholder={INPUT_PROPS.featureOne.description.placeholder} value={featureOne.description} onChange={event => { onFeatureDescriptionChange(event, featureOne, setFeatureOne) }} disabled={selectedFeatureOne.inputDisabled} inputProps={{ maxLength: "115", type: "text" }} />
-                <div className="baseCard-flexRow">
-                    <Grid container spacing={1}>
-                        <Grid item xs={12} sm={6}>
-                            <BasicTextField id="input-feature-one-damage" label={INPUT_PROPS.featureOne.damage.label} placeholder={INPUT_PROPS.featureOne.damage.placeholder} value={featureOne.damage} onChange={event => { onDamageChange(event, featureOne, setFeatureOne) }} visible={selectedFeatureOne.damageInputVisible} inputProps={{ maxLength: "4", max: "9999", min: "0", type: "number" }} />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <BasicCombobox
+                <BasicTextField id="input-feature-one-damage" label={INPUT_PROPS.featureOne.damage.label} placeholder={INPUT_PROPS.featureOne.damage.placeholder} value={featureOne.damage} onChange={event => { onDamageChange(event, featureOne, setFeatureOne) }} visible={selectedFeatureOne.damageInputVisible} inputProps={{ maxLength: "4", max: "9999", min: "0", type: "number" }} />
+                {renderEnergySelector(featureOne, setFeatureOne, INPUT_PROPS.featureOne.selectorEnergyType.label)}
+                            {/* <BasicCombobox
                                 id="selector-feature-one-damage-addition"
                                 label={INPUT_PROPS.featureOne.damageAddition.label}
                                 value={featureOne}
@@ -516,11 +515,8 @@ const BaseCard = () => {
                                         {element.key}
                                     </MenuItem>)
                                 })}
-                            </BasicCombobox>
-                        </Grid>
-                    </Grid>
-                </div>
-                <BasicCombobox
+                            </BasicCombobox> */}
+                {/* <BasicCombobox
                     id="selector-feature-one-energy"
                     label={INPUT_PROPS.featureOne.selectorEnergy.label}
                     value={featureOneEnergy}
@@ -549,20 +545,14 @@ const BaseCard = () => {
                             {element.title}
                         </MenuItem>)
                     })}
-                </BasicCombobox>
-                {renderEnergySelector(featureOne, setFeatureOne, INPUT_PROPS.featureOne.selectorEnergyType.label)}
-            </React.Fragment>
-                );
-            }
-            case 2:{
-                return(
-                    <React.Fragment>
-                        <BasicTextField id="input-feature-two-title" label={INPUT_PROPS.featureTwo.title.label} placeholder={INPUT_PROPS.featureTwo.title.placeholder} value={featureTwo.title} onChange={event => { onFeatureTitleChange(event, featureTwo, setFeatureTwo) }} inputProps={{ maxLength: "23", type: "text" }} />
+                </BasicCombobox> */}
+                
+                <Grid item xs={12}><Typography variant="h5" style={{color:"black",}} component="h5">{INPUT_PROPS.featureTwo.selector.label}</Typography></Grid>
+                <BasicTextField id="input-feature-two-title" label={INPUT_PROPS.featureTwo.title.label} placeholder={INPUT_PROPS.featureTwo.title.placeholder} value={featureTwo.title} onChange={event => { onFeatureTitleChange(event, featureTwo, setFeatureTwo) }} inputProps={{ maxLength: "23", type: "text" }} />
                         <BasicTextField id="input-feature-two-description" label={INPUT_PROPS.featureTwo.description.label} placeholder={INPUT_PROPS.featureTwo.description.placeholder} value={featureTwo.description} onChange={event => onFeatureDescriptionChange(event, featureTwo, setFeatureTwo)} inputProps={{ maxLength: "115", type: "text"}} />
-                        <Grid container spacing={1}>
-                            <Grid item xs={12} sm={6}><BasicTextField id="input-feature-two-damage" label={INPUT_PROPS.featureTwo.damage.label} placeholder={INPUT_PROPS.featureTwo.damage.placeholder} value={featureTwo.damage} onChange={event => { onDamageChange(event, featureTwo, setFeatureTwo) }} inputProps={{ maxLength: "4", max: "9999", min: "0", type: "number"}} /> </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <BasicCombobox
+                        <BasicTextField id="input-feature-two-damage" label={INPUT_PROPS.featureTwo.damage.label} placeholder={INPUT_PROPS.featureTwo.damage.placeholder} value={featureTwo.damage} onChange={event => { onDamageChange(event, featureTwo, setFeatureTwo) }} inputProps={{ maxLength: "4", max: "9999", min: "0", type: "number"}} />
+                        {renderEnergySelector(featureTwo, setFeatureTwo, INPUT_PROPS.featureTwo.selectorEnergyType.label)}
+                                {/* <BasicCombobox
                                 id="selector-feature-two-damage-addition"
                                 label={INPUT_PROPS.featureTwo.damageAddition.label}
                                 value={featureTwo}
@@ -590,10 +580,8 @@ const BaseCard = () => {
                                         {element.key}
                                     </MenuItem>)
                                 })}
-                                </BasicCombobox>
-                            </Grid>
-                        </Grid>
-                        <BasicCombobox
+                                </BasicCombobox> */}
+                        {/* <BasicCombobox
                         id="selector-feature-two-energy"
                         label={INPUT_PROPS.featureTwo.selectorEnergy.label}
                         value={featureTwoEnergy}
@@ -622,12 +610,11 @@ const BaseCard = () => {
                                     {element.title}
                                 </MenuItem>)
                         })}
-                        </BasicCombobox>
-                        {renderEnergySelector(featureTwo, setFeatureTwo, INPUT_PROPS.featureTwo.selectorEnergyType.label)}
-                    </React.Fragment>
+                        </BasicCombobox> */}
+            </React.Fragment>
                 );
             }
-            case 3:{
+            case 2:{
                 return(
                     <FormGroup>
                         <Grid container spacing={2}>
@@ -638,7 +625,7 @@ const BaseCard = () => {
                     </FormGroup>
                 );
             }
-            case 4:{
+            case 3:{
                 return(
                     <React.Fragment>
                         <Grid container spacing={2}>
@@ -665,7 +652,7 @@ const BaseCard = () => {
 
     return(
         <Grid container>
-            <Grid className="cardframe-center cardframe_mobilscale" item sm={12} md={6} >
+            <Grid className="cardframe-center cardframe_mobilscale" item sm={12} md={6} ref={myRef}>
             <Backdrop className={"loading-div"} open={isLoading} onClick={() => { return }}>
                     <img src={loading} className="App-logo" alt="logo" />
                 </Backdrop>
@@ -752,15 +739,20 @@ const BaseCard = () => {
         <React.Fragment>
             {renderStep(activeStep)}
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-              
-            <Button
-                className="Main_Button"
+            {activeStep === 0 ? (
+            console.log()
+            )
+             : (
+                <Button
+              className="Main_Button"
               disabled={activeStep === 0}
               onClick={handleBack}
               sx={{ mr: 1 }}
             >
               Zurück
             </Button>
+             )}
+            
             <Box sx={{ flex: '1 1 auto' }} />
 
             {isStepOptional(activeStep) && (
@@ -769,7 +761,7 @@ const BaseCard = () => {
               </Button>
             )}
             {activeStep === Steppersteps.length - 1 ? (
-            console.log("finished!")
+            console.log()
             )
              : (
                 <Button className="Main_Button" onClick={handleNext}>

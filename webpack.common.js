@@ -2,7 +2,7 @@ const path = require("path")
 
 module.exports = {
   entry: {
-    'pokepaw_konfigurator': "./scripts/pokepaw_konfigurator.js"
+    'pokepaw_konfigurator_ungezeichnet': "./scripts/pokepaw_konfigurator_ungezeichnet.js"
   },
   module: {
     rules: [
