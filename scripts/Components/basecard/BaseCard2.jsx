@@ -48,6 +48,48 @@ function UploadButton(props) {
     </React.Fragment>)
 }
 
+function UploadButton2(props) {
+    return (<React.Fragment>
+        <input id="contained-button-file2"
+            accept="image/*"
+            onChange={props.onChange}
+            onClick={props.onClick}
+            style={{ display: "none" }}
+            type="file" />
+        <label htmlFor="contained-button-file2">
+            <Button className="Main_Button" fullWidth variant="outlined" color="primary" component="span">{props.buttonTitle}</Button>
+        </label>
+    </React.Fragment>)
+}
+
+function UploadButton3(props) {
+    return (<React.Fragment>
+        <input id="contained-button-file3"
+            accept="image/*"
+            onChange={props.onChange}
+            onClick={props.onClick}
+            style={{ display: "none" }}
+            type="file" />
+        <label htmlFor="contained-button-file3">
+            <Button className="Main_Button" fullWidth variant="outlined" color="primary" component="span">{props.buttonTitle}</Button>
+        </label>
+    </React.Fragment>)
+}
+
+function UploadButton4(props) {
+    return (<React.Fragment>
+        <input id="contained-button-file4"
+            accept="image/*"
+            onChange={props.onChange}
+            onClick={props.onClick}
+            style={{ display: "none" }}
+            type="file" />
+        <label htmlFor="contained-button-file4">
+            <Button className="Main_Button" fullWidth variant="outlined" color="primary" component="span">{props.buttonTitle}</Button>
+        </label>
+    </React.Fragment>)
+}
+
 function Cardname (props) {
     if (props.cardtitle) {
         return (<Text {...props} fontFamily="Gill Sans Bold" fontSize={props.fontSize} text={props.text} x={props.cardtitle.includes("Stage") ? 120 : 45} y={45} width={1000} />)
@@ -154,6 +196,14 @@ const VirtualImage = ({ shapeProps, isSelected, onSelect, onChange, uploadedImag
 const BaseCard2 = () => {
     const [isLoading, setIsLoading] = useState(false)
     const stageRef = React.useRef(null);
+    const [ImageOne, setImageOne] = useState(null)
+    const [ImageTwo, setImageTwo] = useState(null)
+    const [ImageThree, setImageThree] = useState(null)
+    const [ImageFour, setImageFour] = useState(null)
+    const [ImageOneFileName , setImageOneFileName] = useState(null)
+    const [ImageTwoFileName , setImageTwoFileName] = useState(null)
+    const [ImageThreeFileName , setImageThreeFileName] = useState(null)
+    const [ImageFourFileName , setImageFourFileName] = useState(null)
     const [customCardImage, setCustomCardImage] = useState(null)
     const [cardScale, setCardScale] = useState(1)
     const [selectedCard, setSelectedCard] = useState({title: "Pflanze", index: 0, assets: cards[0].assets})
@@ -264,9 +314,25 @@ const BaseCard2 = () => {
         setHealthPoints(input)
     }
 
+    const handleImageUploadOne = (event) => {
+        setImageOne(URL.createObjectURL(event.target.files[0]));
+        setImageOneFileName(event.target.files[0].name);
+    }
+    const handleImageUploadTwo = (event) => {
+        setImageTwo(URL.createObjectURL(event.target.files[0]));
+        setImageTwoFileName(event.target.files[0].name);
+    }
+    const handleImageUploadThree = (event) => {
+        setImageThree(URL.createObjectURL(event.target.files[0]));
+        setImageThreeFileName(event.target.files[0].name);
+    }
+    const handleImageUploadFour = (event) => {
+        setImageFour(URL.createObjectURL(event.target.files[0]));
+        setImageFourFileName(event.target.files[0].name);
+    }
 
     const handleImageUpload = (event) => {
-        setCustomCardImage(URL.createObjectURL(event.target.files[0]));
+        setCustomCardImage();
     }
 
     const onFeatureTitleChange = (event, state, stateFunction) => {
@@ -400,24 +466,25 @@ const BaseCard2 = () => {
       };
 
       function addProduct(anotherArticle) {
-        const uri = stageRef.current.toDataURL({ mimeType: "image/webp", quality: 1});
+
+        const files = [ImageOne, ImageTwo, ImageThree, ImageFour];
 
         switch(basePrice){
             case parseFloat(STATE_VALUES.product2.prices.variant1): {
                 
-                uploadToCloudinaryandtoCardgezeichnet(uri ,STATE_VALUES.product2.variants.variant1, amount, anotherArticle);
+                uploadToCloudinaryandtoCardgezeichnet(files, STATE_VALUES.product2.variants.variant1, amount, anotherArticle);
             break;
             }
             case parseFloat(STATE_VALUES.product2.prices.variant2): {
-                uploadToCloudinaryandtoCardgezeichnet(uri ,STATE_VALUES.product2.variants.variant2, amount, anotherArticle);
+                uploadToCloudinaryandtoCardgezeichnet(files, STATE_VALUES.product2.variants.variant2, amount, anotherArticle);
             break;
             }
             case parseFloat(STATE_VALUES.product2.prices.variant3): {
-                uploadToCloudinaryandtoCardgezeichnet(uri ,STATE_VALUES.product2.variants.variant3, amount, anotherArticle);
+                uploadToCloudinaryandtoCardgezeichnet(files, STATE_VALUES.product2.variants.variant3, amount, anotherArticle);
             break;
             }
             case parseFloat(STATE_VALUES.product2.prices.variant4): {
-                uploadToCloudinaryandtoCardgezeichnet(uri ,STATE_VALUES.product2.variants.variant4, amount, anotherArticle);
+                uploadToCloudinaryandtoCardgezeichnet(files, STATE_VALUES.product2.variants.variant4, amount, anotherArticle);
             break;
             }
          }
@@ -428,9 +495,7 @@ const BaseCard2 = () => {
             case 0: {
                 return(
                 <React.Fragment>
-                        <Grid container spacing={1}>
-                            <Grid item xs={12} sm={6}><BasicTextField id="input-cardname" label={INPUT_PROPS.cardname.label} placeholder={INPUT_PROPS.cardname.placeholder} fullWidth value={cardName} onChange={event => onCardNameChange(event)} /> </Grid>
-                            <Grid item xs={12} sm={6}>
+                    <BasicTextField id="input-cardname" label={INPUT_PROPS.cardname.label} placeholder={INPUT_PROPS.cardname.placeholder} fullWidth value={cardName} onChange={event => onCardNameChange(event)} />
                                 <BasicCombobox id="selector-card"
                                 label={INPUT_PROPS.type.label}
                                 value={selectedCard}
@@ -461,17 +526,8 @@ const BaseCard2 = () => {
                                         </MenuItem>)
                                 })} 
                                 </BasicCombobox>
-                                </Grid>
-                                <Grid item xs={12} sm={6}> <BasicTextField id="input-healthpoints" label={INPUT_PROPS.healthpoints.label} placeholder={INPUT_PROPS.healthpoints.placeholder} fullWidth value={healthPoints} onChange={event => onHealthPointsChange(event)} inputProps={{ maxLength: "4", max: "9999", min: "1", type: "number" }} /></Grid>
-                                <Grid item xs={12} sm={6}> <BasicTextField id="input-simple-text-two" label={INPUT_PROPS.bottomText.label} placeholder={INPUT_PROPS.bottomText.placeholder} value={simpleTextTwo} onChange={event => { setSimpleTextTwo(event.target.value) }} inputProps={{ maxLength: "125", type: "text" }} /></Grid>
-                        </Grid>
-                        
-                        <Grid container spacing={1}>
-                            <Grid item xs={12} sm={6}><Typography variant="h6" >{INPUT_PROPS.backgroundImageButtonText}</Typography></Grid>
-                            <Grid item xs={12} sm={6}><UploadButton buttonTitle="Upload Image" onChange={(event) => {handleImageUpload(event); setIsSelected(true);}} onClick={(event) => event.target.value = null} /></Grid>
-                            <Grid item xs={12} sm={6}><DeleteButton fullWidth onClick={(event) => { setCustomCardImage(null); setIsSelected(false) }} disabled={customCardImage === null ? true : false} /></Grid>
-                            <Grid item xs={12} sm={6}><TransformButton fullWidth isSelected={isSelected} onClick={(event) => { setIsSelected(!isSelected); }} disabled={customCardImage === null ? true : false} /></Grid>
-                        </Grid>
+                    <BasicTextField id="input-healthpoints" label={INPUT_PROPS.healthpoints.label} placeholder={INPUT_PROPS.healthpoints.placeholder} fullWidth value={healthPoints} onChange={event => onHealthPointsChange(event)} inputProps={{ maxLength: "4", max: "9999", min: "1", type: "number" }} />
+                    <BasicTextField id="input-simple-text-two" label={INPUT_PROPS.bottomText.label} placeholder={INPUT_PROPS.bottomText.placeholder} value={simpleTextTwo} onChange={event => { setSimpleTextTwo(event.target.value) }} inputProps={{ maxLength: "125", type: "text" }} />
                 </React.Fragment>
                 );
             }
@@ -483,6 +539,7 @@ const BaseCard2 = () => {
                 <BasicTextField id="input-feature-one-description" label={INPUT_PROPS.featureOne.description.label} placeholder={INPUT_PROPS.featureOne.description.placeholder} value={featureOne.description} onChange={event => { onFeatureDescriptionChange(event, featureOne, setFeatureOne) }} disabled={selectedFeatureOne.inputDisabled} inputProps={{ maxLength: "115", type: "text" }} />
                 <BasicTextField id="input-feature-one-damage" label={INPUT_PROPS.featureOne.damage.label} placeholder={INPUT_PROPS.featureOne.damage.placeholder} value={featureOne.damage} onChange={event => { onDamageChange(event, featureOne, setFeatureOne) }} visible={selectedFeatureOne.damageInputVisible} inputProps={{ maxLength: "4", max: "9999", min: "0", type: "number" }} />
                 {renderEnergySelector(featureOne, setFeatureOne, INPUT_PROPS.featureOne.selectorEnergyType.label)}
+                
                             {/* <BasicCombobox
                                 id="selector-feature-one-damage-addition"
                                 label={INPUT_PROPS.featureOne.damageAddition.label}
@@ -626,10 +683,16 @@ const BaseCard2 = () => {
                     <React.Fragment>
                         <Grid container spacing={2}>
                         <Grid item xs={12}><Typography variant="h5" style={{color:"black",}} component="h5">{INPUT_PROPS.abschluss.label}</Typography></Grid>
-                        <Grid item xs={7} sm={7}></Grid>
-                        <Grid item xs={3} sm={3}><Typography variant="p" style={{color:"black",}} component="h5">{INPUT_PROPS.additionals.amount.label}</Typography></Grid>
-                        <Grid item xs={2} sm={2}><BasicTextField id="input-additionals-amount" placeholder={INPUT_PROPS.additionals.amount.placeholder} value={amount} onChange={event => { onAmountChange(event) }} inputProps={{ maxLength: "3", max: "999", min: "1", type: "number" }} /></Grid>
-                        {/* <Grid item xs={10}></Grid> */}
+                        <Grid item xs={6}><Typography variant="h6" style={{color:"black",}} component="h6">{ImageOneFileName !== null ? ImageOneFileName : "Bild 1"}</Typography></Grid>
+                        <Grid item xs={6}><UploadButton buttonTitle="Hochladen" onChange={(event) => {handleImageUploadOne(event);}} onClick={(event) => event.target.value = null} /></Grid>
+                        <Grid item xs={6}><Typography variant="h6" style={{color:"black",}} component="h6">{ImageTwoFileName !== null ? ImageTwoFileName : "Bild 2"}</Typography></Grid>
+                        <Grid item xs={6}><UploadButton2 buttonTitle="Hochladen" onChange={(event) => {handleImageUploadTwo(event);}} onClick={(event) => event.target.value = null} /></Grid>
+                        <Grid item xs={6}><Typography variant="h6" style={{color:"black",}} component="h6">{ImageThreeFileName !== null ? ImageThreeFileName : "Bild 3"}</Typography></Grid>
+                        <Grid item xs={6}><UploadButton3 buttonTitle="Hochladen" onChange={(event) => {handleImageUploadThree(event);}} onClick={(event) => event.target.value = null} /></Grid>
+                        <Grid item xs={6}><Typography variant="h6" style={{color:"black",}} component="h6">{ImageFourFileName !== null ? ImageFourFileName : "Bild 4"}</Typography></Grid>
+                        <Grid item xs={6}><UploadButton4 buttonTitle="Hochladen" onChange={(event) => {handleImageUploadFour(event);}} onClick={(event) => event.target.value = null} /></Grid>
+                        <Grid item xs={6}><Typography variant="h6" style={{color:"black",}} component="h6">{INPUT_PROPS.additionals.amount.label}</Typography></Grid>
+                        <Grid item xs={6}><BasicTextField id="input-additionals-amount" placeholder={INPUT_PROPS.additionals.amount.placeholder} value={amount} onChange={event => { onAmountChange(event) }} inputProps={{ maxLength: "3", max: "999", min: "1", type: "number" }} /></Grid>
                         <Grid item xs={12}>
                         <Button style={{backgroundColor:"rgb(60, 91, 167)", color:"white", width:'100%'}} onClick={() => addProduct(true)}>{INPUT_PROPS.abschluss.buttonWeiterKarte}</Button>
                         <Button style={{backgroundColor:"rgb(60, 91, 167)", color:"white", width:'100%', marginTop:'4px'}} className="Main_Button" onClick={() => addProduct(false)}>{INPUT_PROPS.abschluss.buttonAbschließen}</Button>
@@ -672,7 +735,7 @@ const BaseCard2 = () => {
                         <RenderAttackCosts id="feature-one-energy" images={featureOne.iconArray} yBase={0} config={featureOneEnergy.config} visible={selectedFeatureOne.attackVisible} />
                     </React.Fragment>
                     <React.Fragment>
-                        <AtkText id="feature-two-name" text={featureTwo.title} fill={checkDarkCard()} x={100} y={selectedFeatureOne.index > 0 ? featureTwo.description === "" ? 494 : 470 : featureTwo.description == "" ? 44 :428} align="center" />
+                        <AtkText id="feature-two-name" text={featureTwo.title} fill={checkDarkCard()} x={100} y={selectedFeatureOne.index > 0 ? featureTwo.description === "" ? 494 : 470 : featureTwo.description == "" ? 44 :428} align="center"/>
                         <Text id="feature-two-description-bottom" preventDefault={false} fontFamily="Gill Sans MT" fontSize={15} text={featureTwo.description.substr(0)} fill={checkDarkCard()} x={100} y={selectedFeatureOne.index > 0 ? 492 : 450} width={260} lineHeight={1.15} />
                         <Text id="feature-two-damage" preventDefault={false} fontFamily="Futura Std Heavy" fontSize={30} text={featureTwo.damage + featureTwo.damageAddition.value} fill={checkDarkCard()} x={340} y={selectedFeatureOne.index > 0 ? 482 : 440} align="right" width={100} visible={featureTwo.damage === "0" || featureTwo.damage === "" ? false : true} />
                         <RenderAttackCosts id="feature-two-costs" images={featureTwo.iconArray} yBase={selectedFeatureOne.index > 0 ? 0 : -50} config={featureTwoEnergy.config} />

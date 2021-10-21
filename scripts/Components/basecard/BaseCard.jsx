@@ -631,7 +631,7 @@ const BaseCard = () => {
                         <Grid container spacing={2}>
                         <Grid item xs={12}><Typography variant="h5" style={{color:"black",}} component="h5">{INPUT_PROPS.abschluss.label}</Typography></Grid>
                         <Grid item xs={7} sm={7}></Grid>
-                        <Grid item xs={3} sm={3}><Typography variant="p" style={{color:"black",}} component="h5">{INPUT_PROPS.additionals.amount.label}</Typography></Grid>
+                        <Grid item xs={3} sm={3}><Typography variant="h5" style={{color:"black",}} component="h5">{INPUT_PROPS.additionals.amount.label}</Typography></Grid>
                         <Grid item xs={2} sm={2}><BasicTextField id="input-additionals-amount" placeholder={INPUT_PROPS.additionals.amount.placeholder} value={amount} onChange={event => { onAmountChange(event) }} inputProps={{ maxLength: "3", max: "999", min: "1", type: "number" }} /></Grid>
                         {/* <Grid item xs={10}></Grid> */}
                         <Grid item xs={12}>

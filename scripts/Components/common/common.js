@@ -1,6 +1,6 @@
 import useImage from 'use-image';
 import { Image, Text } from 'react-konva';
-import { Accordion, AccordionDetails, AccordionSummary, Backdrop, Button, Dialog, DialogActions, DialogContentText, DialogTitle, IconButton, LinearProgress, MenuItem, TextField, Typography, withStyles } from '@material-ui/core'
+import { Accordion, AccordionDetails, AccordionSummary, Backdrop, Button, Dialog, DialogActions, DialogContentText, DialogTitle, IconButton, LinearProgress, List, MenuItem, TextField, Typography, withStyles } from '@material-ui/core'
 import { Add as AddIcon, CenterFocusStrong, Description, Remove as RemoveIcon } from '@material-ui/icons'
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import React from 'react';
@@ -257,11 +257,11 @@ export const EnergySelector = (options, state, stateFunction, labelProp) => {
 }
 
 export const TransformButton = (props) => {
-    return (<Button {...props} onClick={props.onClick} disabled={props.disabled} variant="outlined" color="primary" >{props.isSelected ? "Confirm Image" : "Move Image"}</Button>)
+    return (<Button {...props} onClick={props.onClick} disabled={props.disabled} variant="outlined" color="primary" >{props.isSelected ? "Bild Bestätigen" : "Bild Löschen"}</Button>)
 }
 
 export const DeleteButton = (props) => {
-    return (<Button {...props} onClick={props.onClick} disabled={props.disabled} variant="outlined" color="primary" >Delete Image</Button>)
+    return (<Button {...props} onClick={props.onClick} disabled={props.disabled} variant="outlined" color="primary" >Bild Löschen</Button>)
 }
 
 export const checResistanceNumber = (state) => {
@@ -312,49 +312,86 @@ export const convertDataURLToImage = async (dataURL) => {
     return image
 }
 
-export const uploadToCloudinaryandtoCardgezeichnet = (uri, variantId, amount, anotherArticle) => {
+export const uploadToCloudinaryandtoCardgezeichnet = (files, variantId, amount, anotherArticle) => {
     //Create Data Object
-    var data = {
-        upload_preset: "qflywbku", // the unsigned image preset within cloudinary
-        context: "photo=phototitle",
-        file: uri
-    }
+    const ImageURLS = [4];
 
-    jQuery.post("https://api.cloudinary.com/v1_1/dhymgkjqg/upload", data).done(function(data) {
-                   // do something here
-                }).then(function(data) {
-                    let formData = {
-                        'items': [{
-                        'id': variantId,
-                        'quantity': amount,
-                        'properties': {
-                            'Photo': data.secure_url
-                        }
-                        }]
-                        };
-    
-                     fetch('/cart/add.js', {
-                        method: 'POST',
-                        headers: {
-                        'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(formData)
-                        })
-                        .then(response => {
-                        if (anotherArticle === true){
-                            window.location.reload(false); 
-                        }else if(anotherArticle === false){
-                        window.location.replace("/cart");
-                        }
-                        return response.json();
-                        })
-                        .catch((error) => {
-                        console.error('Error:', error);
-                        });
+    const data1 = {
+            upload_preset: "qflywbku", // the unsigned image preset within cloudinary
+            context: "photo=phototitle",
+            file: files[0]
+        };
+    const data2 = {
+            upload_preset: "qflywbku", // the unsigned image preset within cloudinary
+            context: "photo=phototitle",
+            file:  files[1]
+        };
+    const data3 = {
+            upload_preset: "qflywbku", // the unsigned image preset within cloudinary
+            context: "photo=phototitle",
+            file:  files[2]
+        };
+    const data4 = {
+            upload_preset: "qflywbku", // the unsigned image preset within cloudinary
+            context: "photo=phototitle",
+            file:  files[3]
+        };
+
+        jQuery.post("https://api.cloudinary.com/v1_1/dhymgkjqg/upload", data1)
+        .done(function(data) {
+            ImageURLS[0] = data.secure_url;
+        })
+        .then(
+        jQuery.post("https://api.cloudinary.com/v1_1/dhymgkjqg/upload", data2)
+        .done(function(data) {
+            ImageURLS[1] = data.secure_url;
+        }))
+        .then(
+        jQuery.post("https://api.cloudinary.com/v1_1/dhymgkjqg/upload", data3)
+        .done(function(data) {
+            ImageURLS[2] = data.secure_url;
+        }))
+        .then(
+        jQuery.post("https://api.cloudinary.com/v1_1/dhymgkjqg/upload", data4)
+        .done(function(data) {
+            ImageURLS[3] = data.secure_url;
+        }))
+        .then(function() {
+            let formData = { 
+                'items': [{
+                'id': variantId,
+                'quantity': amount,
+                'properties': {
+                    'Photo1': ImageURLS[0],
+                    'Photo2': ImageURLS[1],
+                    'Photo3': ImageURLS[2],
+                    'Photo4': ImageURLS[3]
+                }
+                }]
+                };
+        
+             fetch('/cart/add.js', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+                })
+                .then(response => {
+                if (anotherArticle === true){
+                    window.location.reload(false); 
+                }else if(anotherArticle === false){
+                window.location.replace("/cart");
+                }
+                return response.json();
+                })
+                .catch((error) => {
+                console.error('Error:', error);
                 });
-        return true;
-    }
+        });
 
+    return true;
+}
 
 export const uploadToCloudinaryandtoCard = (uri, variantId, amount, anotherArticle) => {
     //Create Data Object
